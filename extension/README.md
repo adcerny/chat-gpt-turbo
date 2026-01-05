@@ -5,7 +5,6 @@ This extension collapses older ChatGPT messages into lightweight text-only block
 ## Features
 - Automatically collapses older conversation turns while keeping the latest ones expanded.
 - Shows a small indicator with how many messages were collapsed.
-- Replaces older, heavy DOM trees with lightweight placeholders to keep memory and rendering costs down.
 - Works on chatgpt.com and chat.openai.com.
 
 ## How to load locally
