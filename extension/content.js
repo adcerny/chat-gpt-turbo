@@ -58,6 +58,10 @@
     const text = node.innerText.trim();
     const summaryText = text.split('\n').find(Boolean) || 'Collapsed message';
 
+    const placeholder = document.createElement('div');
+    placeholder.classList.add('dom-trimmer-node');
+    placeholder.setAttribute(DOM_TRIM_ATTRIBUTE, 'true');
+
     const details = document.createElement('details');
     details.open = false;
 
@@ -69,9 +73,10 @@
     pre.textContent = text || '[Empty message content]';
     details.appendChild(pre);
 
-    node.replaceChildren(details);
-    node.setAttribute(DOM_TRIM_ATTRIBUTE, 'true');
-    node.classList.add('dom-trimmer-node');
+    placeholder.appendChild(details);
+
+    // Replace the original node entirely so the heavy subtree can be garbage-collected.
+    node.replaceWith(placeholder);
     return true;
   }
 
